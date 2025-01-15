@@ -3,7 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ShopController;
-use App\Http\Controllers\ToyController;
+use App\Http\Controllers\DrinkController;
+use App\Models\Shop;
+use App\Models\Drink;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +22,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/shop/{id}', [ShopController::class, 'getById']);
-Route::post('/shop', [ShopController::class, 'create']);
-Route::apiResource('/Toy', ToyController::class);
+Route::get('/shop/{id}', [ShopController::class, 'show']);
+Route::get('/drink/{id}/shop', [DrinkController::class, 'showShop']);
+Route::get('/shop/{id}/drinks', [ShopController::class, 'showDrinks']);
+Route::post('/shop', [ShopController::class, 'store']);
+Route::post('/drink', [DrinkController::class, 'store']);

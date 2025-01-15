@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Models\Shop;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,11 +13,4 @@ use App\Models\Shop;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/shop/{id}', function ($id) {
-    $shop = Shop::getById($id);
-    return response()->json($shop);
-});
+// ...existing code...

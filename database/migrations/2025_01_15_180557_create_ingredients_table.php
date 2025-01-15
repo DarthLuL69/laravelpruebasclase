@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table("snacks", function (Blueprint $table) {
-            if (!Schema::hasColumn('snacks', 'shop_id')) {
-                $table->foreignId("shop_id")->constrained("shops")->cascadeOnDelete()->cascadeOnUpdate();
-            }
+        Schema::create('ingredients', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
+            $table->string("name",32);
         });
     }
 
@@ -27,9 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table("snacks", function (Blueprint $table) {
-            $table->dropForeign(['shop_id']);
-            $table->dropColumn('shop_id');
-        });
+        Schema::dropIfExists('ingredients');
     }
 };

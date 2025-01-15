@@ -4,22 +4,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Shop extends Model
+class Drink extends Model
 {
     use HasFactory;
-
-    protected $table = 'shops';
 
     protected $fillable = [
         'name',
         'description',
-        'address',
-        'phone',
-        'email'
+        'price',
+        'shop_id'
     ];
 
-    public function drinks()
+    public function shop()
     {
-        return $this->hasMany(Drink::class);
+        return $this->belongsTo(Shop::class);
     }
 }
